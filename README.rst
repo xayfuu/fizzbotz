@@ -15,7 +15,6 @@ Fizzbotz
 
 A bot for discord written in Python implementing some basic commands.
 
-* Free software: ISC license
 * Documentation: https://fizzbotz.readthedocs.org.
 
 Features
