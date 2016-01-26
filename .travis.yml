@@ -22,7 +22,11 @@ deploy:
     repo: martensm/fizzbotz
     tags: true
 env:
-- TOXENV=py35
-install: pip install -U tox
+  - TOXENV=py35
+install:
+  - pip install -U tox
 language: python
-script: tox
+python:
+  - 3.5
+script:
+  - tox
