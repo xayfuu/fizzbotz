@@ -8,8 +8,8 @@ Fizzbotz
 .. image:: https://img.shields.io/travis/martensm/fizzbotz.svg
         :target: https://travis-ci.org/martensm/fizzbotz
 
-.. image:: 	https://img.shields.io/coveralls/martensm/fizzbotz/badge/master.svg
-        :target: https://coveralls.io/github/martensm/fizzbotz?branch=master
+.. image:: 	https://img.shields.io/coveralls/martensm/fizzbotz/master.svg
+        :target: https://coveralls.io/github/martensm/fizzbotz
 
 .. image:: https://readthedocs.org/projects/fizzbotz/badge/?version=latest
         :target: https://readthedocs.org/projects/fizzbotz/?badge=latest
