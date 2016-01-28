@@ -11,6 +11,8 @@ Fizzbotz
 .. image:: 	https://img.shields.io/coveralls/martensm/fizzbotz/master.svg
         :target: https://coveralls.io/github/martensm/fizzbotz
 
+.. image:: https://img.shields.io/scrutinizer/g/martensm/fizzbotz/master.svg
+        :target: https://scrutinizer-ci.com/g/martensm/fizzbotz
 .. image:: https://readthedocs.org/projects/fizzbotz/badge/?version=latest
         :target: https://readthedocs.org/projects/fizzbotz/?badge=latest
         :alt: Documentation Status
