@@ -5,7 +5,7 @@ Fizzbotz
 .. image:: https://img.shields.io/pypi/v/fizzbotz.svg
         :target: https://pypi.python.org/pypi/fizzbotz
 
-.. image:: https://img.shields.io/travis/martensm/fizzbotz.svg
+.. image:: https://img.shields.io/travis/martensm/fizzbotz/master.svg
         :target: https://travis-ci.org/martensm/fizzbotz
 
 .. image:: 	https://img.shields.io/coveralls/martensm/fizzbotz/master.svg
