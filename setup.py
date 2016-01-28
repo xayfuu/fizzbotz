@@ -22,6 +22,12 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
+setup_requires = [
+    'pytest-runner'
+]
+tests_require = [
+    'pytest'
+]
 setup(
     name='fizzbotz',
     version='0.1.0',
@@ -37,6 +43,7 @@ setup(
                  'fizzbotz'},
     include_package_data=True,
     install_requires=requirements,
+    setup_requires=setup_requires,
     license="MIT",
     zip_safe=False,
     keywords='fizzbotz',
@@ -54,5 +61,5 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
     test_suite='tests',
-    tests_require=test_requirements
+    tests_require=tests_require
 )
