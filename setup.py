@@ -14,8 +14,8 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [
-    # TODO: put package requirements here
+install_requires = [
+    'beautifulsoup4'
 ]
 
 test_requirements = [
@@ -42,7 +42,7 @@ setup(
     package_dir={'fizzbotz':
                  'fizzbotz'},
     include_package_data=True,
-    install_requires=requirements,
+    install_requires=install_requires,
     setup_requires=setup_requires,
     license="MIT",
     zip_safe=False,
