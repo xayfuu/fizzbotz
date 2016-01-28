@@ -18,10 +18,6 @@ install_requires = [
     'beautifulsoup4'
 ]
 
-test_requirements = [
-    # TODO: put package test requirements here
-]
-
 setup_requires = [
     'pytest-runner'
 ]
