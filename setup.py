@@ -14,7 +14,13 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
+dependency_links = [
+    # TODO: figure out a better way to make discord.py async branch work
+    'https://codeload.github.com/Rapptz/discord.py/legacy.tar.gz/async#egg=discord.py-0.10.0a0',
+]
+
 install_requires = [
+    'discord.py==0.10.0a0',
     'beautifulsoup4'
 ]
 
@@ -40,6 +46,7 @@ setup(
     package_dir={'fizzbotz':
                  'fizzbotz'},
     include_package_data=True,
+    dependency_links=dependency_links,
     install_requires=install_requires,
     setup_requires=setup_requires,
     license=fizzbotz.__license__,
