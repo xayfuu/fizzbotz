@@ -5,9 +5,9 @@ install:
   - pip install -U tox
   - pip install coveralls
 script:
-    - coverage run --source=fizzbotz setup.py test
+  - coverage run --source=fizzbotz setup.py test
 after_success:
-    - coveralls
+  - coveralls
 
 deploy:
   provider: pypi
@@ -27,7 +27,6 @@ deploy:
       UVlIVTRZRFUva085SFVoZEIxMHlnWTNtTlZFVXF5dTRSUy9yTUcxQ29CNDAzM3J1cC9XeFlaSmUy
       ZGVHVHVKSW9QUldlNEx1ZVQvNEdTZkMvVVJ0YStWeXlJaklxdlpTbFVSckt1QURxdytQbm1ITTF4
       SzhjVzJsVDQzTXR4bEpBNENJd203YmV3bHNUZE5zcVhYenA4WmJZTVJ2YWc0dGR0a0tGZXZTNVU9
-  true:
-    condition: $TOXENV == py35
+  on:
     repo: martensm/fizzbotz
     tags: true
