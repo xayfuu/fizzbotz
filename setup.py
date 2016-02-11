@@ -1,12 +1,6 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
-import fizzbotz
-
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -20,8 +14,8 @@ dependency_links = [
 ]
 
 install_requires = [
-    'discord.py==0.10.0a0',
-    'beautifulsoup4'
+    'beautifulsoup4',
+    'discord.py==0.10.0a0'
 ]
 
 setup_requires = [
@@ -29,17 +23,18 @@ setup_requires = [
 ]
 
 tests_require = [
-    'pytest'
+    'pytest',
+    'pytest-asyncio'
 ]
 
 setup(
-    name=fizzbotz.__name__,
-    version=fizzbotz.__version__,
-    description=fizzbotz.__description__,
+    name='fizzbotz',
+    version='0.1.0',
+    description='A bot for discord written in Python implementing some basic commands.',
     long_description=readme + '\n\n' + history,
-    author=fizzbotz.__author__,
-    author_email=fizzbotz.__email__,
-    url=fizzbotz.__url__,
+    author='Matthew Martens',
+    author_email='matthew.s.martens@gmail.com',
+    url='https://github.com/martensm/fizzbotz',
     packages=[
         'fizzbotz',
     ],
@@ -49,7 +44,7 @@ setup(
     dependency_links=dependency_links,
     install_requires=install_requires,
     setup_requires=setup_requires,
-    license=fizzbotz.__license__,
+    license='MIT',
     zip_safe=False,
     keywords='fizzbotz',
     classifiers=[
