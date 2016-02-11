@@ -1,32 +1,19 @@
 language: python
 python:
-  - 3.5
+- 3.5
 install:
-  - pip install -U tox
-  - pip install coveralls
+- pip install -U setuptools
+- pip install coveralls
 script:
-  - coverage run --source=fizzbotz setup.py test
+- coverage run --source=fizzbotz setup.py test
 after_success:
-  - coveralls
-
+- coveralls
 deploy:
   provider: pypi
   user: martensm
-  distributions: sdist bdist_wheel
   password:
-    secure: !!binary |
-      RURvTkZWaWcyR054MGNvQmdXWlhmZDc3UEVpNEtqb2E2MjZDeXE1TUpucnB1bFB3bERlZFhhS1la
-      dEhjRG1wYTdlQjNHNXVOWkI3bzhDK1Y3d2w2VzkzTmRYaUhOdUkzeW5CbHpOUjhIVGJoMVBmTmZM
-      cmRXeGJnZzVZTkpSUy9jUm55U2N6UTJ4cDlFWEQ0NTNadkRkcGRzZjhqQ3ZlRWo0Mlh4MDEzZXRO
-      ODNWOU84M01tdU04R1NIQk9xZHUzb3lUMzZYZHpIalQwblp5UjNNU1NBeGQwclVvVm5rOHVrVFZW
-      QmN4R0xaZ1pZVXJyWmUvUWtGaHNQZ1laOWlPL3QyOEtQWG1xUHQ0NXVVQnM2azhiT2ZlbSs5cUxi
-      T3hwdU95dkswdUZFWG8yWVd5c1g3MjNacXpXd0NMUjMwZnNTZlY2MU83clVNWTgyMmNaaUVURFlF
-      Q2Ftck5QMmpOMC9mRWRTWS9oc21XQ2RJRTNUdWZrbW1pNi9sNFd4K0wvdFI0cTFQclplZHFoVjgv
-      dWRGNVlDOXgySHp6MWwvRHg2dnNtZmZyMkIwOWNrQlVxeFY1dElSd1VQUjc4K2ltNTBFcTc5eXd3
-      bUhtWUg5V0JoMGlqTVRPdjBZcVhCaXVMcVdEZmFlSU9iQkhlZTQvbVNvTGluTUg5Y0FubUt6c0dy
-      UVlIVTRZRFUva085SFVoZEIxMHlnWTNtTlZFVXF5dTRSUy9yTUcxQ29CNDAzM3J1cC9XeFlaSmUy
-      ZGVHVHVKSW9QUldlNEx1ZVQvNEdTZkMvVVJ0YStWeXlJaklxdlpTbFVSckt1QURxdytQbm1ITTF4
-      SzhjVzJsVDQzTXR4bEpBNENJd203YmV3bHNUZE5zcVhYenA4WmJZTVJ2YWc0dGR0a0tGZXZTNVU9
+    secure: yDoHpL8cC0RrshBib8/N1LWxs7bA6BZYREszywAHXJPYxQ3dlOArn5TBZrBTyMz57wNZdqPGwg6jAJ/fH4Uv/vwXPLblRfsfJuZNF9X93KCFIHUrHSEok/oNEaAg3RtkzGR+VFXhXMJuLRcp/snOb6Z3/FZLI5SnVONFnPqHY1dH9Py98cdvKyic2r/depw3PONEh6UifoW/7zGHmBZRE3UTXn1X70dc147YPzrciXtBdAoFypnor3aQqZEvNhGVeKiv4kMyd0lxzPOjYlRo6E7P8Zf2lP2OtkcV3MWJmu2KbbpnYlHOQ/Ga4xg+T4TJmM31ObrQJEkp4424xRti9GEQnv1NkcXSoYtBzZTwwzVYTx+CS1sHWTIfAzEHSv7j8WLU54MgZNPo61X/ZtvFddxruK0wDZ5cOnlFO1uleEgNm7rPpIFMX5hJOiTGdresAZD4eMcfCr/AIUhsmeNtxiYh5vGbtla+xHaXIHSkhodjnM7LWwlAexPczOHVjtXqZSUqXFUMZcVZR2Z7xeSvIPc8rfOSGE7KjT9Q84Sqk1woIO06C66V4iz6hH18bxxBpNwlb8kzuQi8nZQSmEla/WcFLL19IUudpQTwXevqvrX5kHvmidP1lMlBZEzFQq1E9xwXHx8AlFVXUFokXcucuxcgEmlK1M0ieOHNZc1vEHk=
   on:
-    repo: martensm/fizzbotz
     tags: true
+    distributions: sdist bdist_wheel
+    repo: martensm/fizzbotz
