@@ -6,6 +6,7 @@ import string
 import bs4
 
 import fizzbotz.util as util
+from fizzbotz.exceptions import StringLengthError, EmptyStringError
 
 
 class TwitchChat:
@@ -72,10 +73,10 @@ class Square:
 
     async def get(self, string_literal):
         if len(string_literal) > 31:
-            raise ValueError('String is too long')
+            raise StringLengthError
 
         if not string_literal:
-            raise ValueError("Can't generate square from empty string")
+            raise EmptyStringError
 
         square = await self.get_square(string_literal)
         return '```\n{}\n```'.format(square)

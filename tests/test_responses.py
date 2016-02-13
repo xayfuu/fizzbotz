@@ -61,7 +61,10 @@ async def test_square():
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize('string_literal', ['', 'This string is longer than the max allowed.'])
-async def test_square_exception(string_literal):
-    with pytest.raises(ValueError):
+@pytest.mark.parametrize('string_literal, exception', [
+                            ('', fizzbotz.EmptyStringError),
+                            ('This string is longer than the max allowed.', fizzbotz.StringLengthError)
+                        ])
+async def test_square_exceptions(string_literal, exception):
+    with pytest.raises(exception):
         await fizzbotz.Square().get(string_literal)
