@@ -1,13 +1,13 @@
 language: python
 python:
 - 3.5
-install:
+before_install:
+- pip install codecov
 - pip install -U setuptools
-- pip install coveralls
 script:
 - coverage run --source=fizzbotz setup.py test
 after_success:
-- coveralls
+- codecov
 deploy:
   provider: pypi
   user: martensm
