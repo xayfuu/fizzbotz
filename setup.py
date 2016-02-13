@@ -8,13 +8,9 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-dependency_links = [
-    'https://github.com/Rapptz/discord.py/archive/async.tar.gz#egg=discord.py-0.10.0a0',
-]
-
 install_requires = [
+    'aiohttp',
     'beautifulsoup4',
-    'discord.py==0.10.0a0'
 ]
 
 setup_requires = [
@@ -38,7 +34,6 @@ setup(
         'fizzbotz',
     ],
     include_package_data=True,
-    dependency_links=dependency_links,
     install_requires=install_requires,
     setup_requires=setup_requires,
     license='MIT',
