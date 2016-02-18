@@ -20,6 +20,7 @@ def get_test_file(filename, extension):
                             ('twitchquotes_unicode', fizzbotz.TwitchChat().get_twitchquotes_pasta),
                             ('joke_oneliner', fizzbotz.Joke().get_oneliner),
                             ('joke_oneliner_quote', fizzbotz.Joke().get_oneliner),
+                            ('insult', fizzbotz.Insult().get)
                         ])
 async def test_messages(filename, message_function):
     raw_html = get_test_file(filename, 'html')

@@ -82,6 +82,15 @@ class Square:
         return '```\n{}\n```'.format(square)
 
 
+class Insult:
+    async def get(self, from_html=None):
+        url = 'http://www.insultgenerator.org/'
+        text = await util.get_markup(url) if from_html is None else from_html
+
+        parsed_insult = bs4.BeautifulSoup(text, 'html.parser')
+        return parsed_insult.find('div', class_='wrap').get_text().lstrip()
+
+
 class Imgur:
     def __init__(self, queue_size=20):
         self._image_queue = util.ImageQueue(queue_size)
