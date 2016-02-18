@@ -91,3 +91,20 @@ class Imgur:
             await self._image_queue.populate()
 
         return await self._image_queue.get_image()
+
+
+class Roll:
+    async def get(self, dice=None):
+        if not dice:
+            return str(random.randint(1, 6))
+
+        dice = dice.lower()
+
+        try:
+            rolls, limit = map(int, dice.split('d'))
+            return ', '.join(str(random.randint(1, limit)) for _ in range(rolls))
+        except ValueError:
+            try:
+                return str(random.randint(1, int(dice)))
+            except ValueError:
+                raise

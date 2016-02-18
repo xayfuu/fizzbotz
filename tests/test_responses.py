@@ -68,3 +68,16 @@ async def test_square():
 async def test_square_exceptions(string_literal, exception):
     with pytest.raises(exception):
         await fizzbotz.Square().get(string_literal)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize('dice', ['3d10', '3D10', '12', ''])
+async def test_roll(dice):
+    await fizzbotz.Roll().get(dice) is not None
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize('dice', ['d10', '10d', '0', 'foo'])
+async def test_roll_exception(dice):
+    with pytest.raises(ValueError):
+        await fizzbotz.Roll().get(dice)

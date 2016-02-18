@@ -1,4 +1,4 @@
-from .responses import Imgur, Joke, Square, TwitchChat
+from .responses import Imgur, Joke, Roll, Square, TwitchChat
 from .exceptions import FizzbotzException, EmptyStringError, StringLengthError
 import fizzbotz.util
 
