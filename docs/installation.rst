@@ -4,11 +4,8 @@
 Installation
 ============
 
-At the command line::
+At the command line:
 
-    $ easy_install fizzbotz
+.. code-block:: bash
 
-Or, if you have virtualenvwrapper installed::
-
-    $ mkvirtualenv fizzbotz
     $ pip install fizzbotz

@@ -14,23 +14,14 @@ Fizzbotz
 .. image:: https://img.shields.io/scrutinizer/g/martensm/fizzbotz/master.svg
         :target: https://scrutinizer-ci.com/g/martensm/fizzbotz
 
-.. image:: https://readthedocs.org/projects/fizzbotz/badge/?version=latest
-        :target: https://readthedocs.org/projects/fizzbotz/?badge=latest
-        :alt: Documentation Status
-
-A bot for discord written in Python implementing some basic commands.
+A collection of chat message utilities written in python. Useful for bots or web services.
 
 * Documentation: https://fizzbotz.readthedocs.org.
 
 Features
 --------
 
-* TODO
-
-Credits
--------
-
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+* Random one liner jokes
+* Random twitch chat copypasta
+* Random imgur images
+* Square text art from a user provided string
