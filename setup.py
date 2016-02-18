@@ -25,7 +25,7 @@ tests_require = [
 
 setup(
     name='fizzbotz',
-    version='0.1.0',
+    version='0.2.0',
     description='A bot for discord written in Python implementing some basic commands.',
     long_description=readme + '\n\n' + history,
     author='Matthew Martens',
