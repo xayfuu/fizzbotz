@@ -71,7 +71,7 @@ checks:
       max_length: '120'
     format_bad_whitespace: true
     format_bad_indentation:
-      indentation: tab
+      indentation: 4 spaces
     format_backtick: true
     exceptions_raising_string: true
     exceptions_raising_bad_type: true
