@@ -75,13 +75,19 @@ async def test_square_exceptions(string_literal, exception):
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize('dice', ['3d10', '3D10', '12', ''])
+@pytest.mark.parametrize('dice', ['2d6', '2D6', '5d999', '999d5', '12', ''])
 async def test_roll(dice):
     await fizzbotz.Roll().get(dice) is not None
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize('dice', ['d10', '10d', '0', 'foo'])
+@pytest.mark.parametrize('dice', ['d99999', '99999d', '0', 'foo'])
 async def test_roll_exception(dice):
     with pytest.raises(ValueError):
         await fizzbotz.Roll().get(dice)
+
+
+@pytest.mark.asyncio
+async def test_roll_length():
+    with pytest.raises(fizzbotz.StringLengthError):
+        await fizzbotz.Roll().get('99999999999999999999999d9')

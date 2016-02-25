@@ -106,6 +106,7 @@ class Imgur:
 
 
 class Roll:
+    _DICE_LIMIT = 5000
     async def get(self, dice=None):
         if not dice:
             return str(random.randint(1, 6))
@@ -114,6 +115,10 @@ class Roll:
 
         try:
             rolls, limit = map(int, dice.split('d'))
+            num_limit_digits = int(len(str(abs(limit))))
+            if rolls * num_limit_digits > self._DICE_LIMIT:
+                raise StringLengthError
+
             return ', '.join(str(random.randint(1, limit)) for _ in range(rolls))
         except ValueError:
             try:
