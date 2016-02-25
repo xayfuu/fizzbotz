@@ -96,13 +96,13 @@ class Insult:
 
 class Imgur:
     def __init__(self, queue_size=20):
-        self._image_queue = util.ImageQueue(queue_size)
+        self._image_queue = util.ImageBuffer(queue_size)
 
     async def get(self):
         if self._image_queue.queue.empty():
             await self._image_queue.populate()
 
-        return await self._image_queue.get_image()
+        return await self._image_queue.get()
 
 
 class Roll:
