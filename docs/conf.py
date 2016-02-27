@@ -1,98 +1,41 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import sys
 import os
-
-# Get the project root dir, which is the parent dir of this
-cwd = os.getcwd()
-project_root = os.path.dirname(cwd)
-
-# Insert the project root dir as the first element in the PYTHONPATH.
-# This lets us ensure that the source package is imported, and that its
-# version is used.
-sys.path.insert(0, project_root)
-
+import sys
+sys.path.insert(0, os.path.abspath(".."))
 import fizzbotz
 
-# -- General configuration ---------------------------------------------
-
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
-
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
-
-# The suffix of source filenames.
-source_suffix = '.rst'
-
-# The master toctree document.
 master_doc = 'index'
 
-# General information about the project.
-project = u'Fizzbotz'
-copyright = u'2016, Matthew Martens'
+project = 'Fizzbotz'
+copyright = '2016, Matthew Martens'
 
-# The version info for the project you're documenting, acts as replacement
-# for |version| and |release|, also used in various other places throughout
-# the built documents.
-#
-# The short X.Y version.
-version = fizzbotz.__version__
-# The full version, including alpha/beta/rc tags.
-release = fizzbotz.__version__
+version = release = fizzbotz.version
 
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+extensions = ['sphinx.ext.autodoc',
+              'sphinx.ext.napoleon',
+              'sphinx.ext.viewcode'
+              ]
 
-# The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+primary_domain = 'py'
+default_role = 'py:obj'
 
-# -- Options for HTML output -------------------------------------------
+autodoc_member_order = 'bysource'
+autoclass_content = 'both'
 
-# on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
+autodoc_docstring_signature = False
+
+latex_documents = [
+    ('index', 'fizzbotz.tex', u'Fizzbotz Documentation', u'Matthew Martens', 'manual'),
+]
+
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-if not on_rtd:  # only import and set the theme if we're building docs locally
+# On RTD we can't import sphinx_rtd_theme, but it will be applied by
+# default anyway.  This block will use the same theme when building locally
+# as on RTD.
+if not on_rtd:
     import sphinx_rtd_theme
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-
-# Output file base name for HTML help builder.
-htmlhelp_basename = 'fizzbotzdoc'
-
-# -- Options for LaTeX output ------------------------------------------
-
-latex_elements = {}
-
-latex_documents = [
-    ('index', 'fizzbotz.tex',
-     u'Fizzbotz Documentation',
-     u'Matthew Martens', 'manual'),
-]
-
-# -- Options for manual page output ------------------------------------
-
-# One entry per manual page. List of tuples
-# (source start file, name, description, authors, manual section).
-man_pages = [
-    ('index', 'fizzbotz',
-     u'Fizzbotz Documentation',
-     [u'Matthew Martens'], 1)
-]
-
-# -- Options for Texinfo output ----------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-texinfo_documents = [
-    ('index', 'fizzbotz',
-     u'Fizzbotz Documentation',
-     u'Matthew Martens',
-     'fizzbotz',
-     'One line description of project.',
-     'Miscellaneous'),
-]
