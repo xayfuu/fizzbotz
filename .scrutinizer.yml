@@ -1,3 +1,7 @@
+before_commands:
+    - pip install aiohttp
+    - pip install bs4
+
 checks:
   python:
     code_rating: true
@@ -46,7 +50,6 @@ checks:
     string_bad_format_character: true
     open_mode_bad_open_mode: true
     newstyle_bad_super_call: true
-    miscellaneous_fixme: true
     logging_unsupported_format: true
     logging_too_many_args: true
     logging_too_few_args: true
