@@ -4,9 +4,11 @@
 import aiohttp
 import asyncio
 
-async def get_markup(url):
-    response = await aiohttp.get(url)
-    markup = await response.text()
+
+@asyncio.coroutine
+def get_markup(url):
+    response = yield from aiohttp.get(url)
+    markup = yield from response.text()
     return markup
 
 
@@ -16,15 +18,18 @@ class Buffer:
         self.queue = asyncio.Queue(maxsize=self.queue_size)
         self.get_item_class = get_item_class
 
-    async def populate(self):
+    @asyncio.coroutine
+    def populate(self):
         for _ in range(self.queue_size):
-            await asyncio.ensure_future(self._put_new_entry())
+            yield from asyncio.ensure_future(self._put_new_entry())
 
-    async def get(self):
-        item = await self.queue.get()
-        await asyncio.ensure_future(self._put_new_entry())
+    @asyncio.coroutine
+    def get(self):
+        item = yield from self.queue.get()
+        yield from asyncio.ensure_future(self._put_new_entry())
         return item
 
-    async def _put_new_entry(self):
-        item = await self.get_item_class.get()
+    @asyncio.coroutine
+    def _put_new_entry(self):
+        item = yield from self.get_item_class.get()
         self.queue.put_nowait(item)

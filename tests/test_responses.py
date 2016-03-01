@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import asyncio
 import codecs
 import os.path as path
 import pytest
@@ -26,9 +27,10 @@ def get_test_file(filename, extension):
                             ('joke_oneliner_quote', fizzbotz.Joke().get_oneliner),
                             ('insult', fizzbotz.Insult().get)
                         ])
-async def test_messages(filename, message_function):
+@asyncio.coroutine
+def test_messages(filename, message_function):
     raw_html = get_test_file(filename, 'html')
-    message = await message_function(from_html=raw_html)
+    message = yield from message_function(from_html=raw_html)
 
     expected_message = get_test_file(filename, 'txt')
     if message != expected_message:
