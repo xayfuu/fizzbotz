@@ -4,6 +4,7 @@
 import codecs
 import os.path as path
 import pytest
+import re
 
 import fizzbotz
 
@@ -35,13 +36,34 @@ async def test_messages(filename, message_function):
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize('callback', [
-                            fizzbotz.Imgur(2).get,
-                            fizzbotz.Joke().get,
-                            fizzbotz.TwitchChat().get
-                        ])
+@pytest.mark.parametrize('callback', [fizzbotz.Joke().get,
+                                      fizzbotz.TwitchChat().get,
+                                      fizzbotz.Insult().get])
 async def test_command_get(callback):
     await callback() is not None
+
+
+@pytest.mark.asyncio
+async def test_imgur():
+    pattern = re.compile('https://i.imgur.com/\w{5}.png')
+    result = fizzbotz.Imgur().get()
+
+    assert pattern.match(await result)
+
+
+@pytest.mark.asyncio
+async def test_buffer_populate():
+    class MockItemClass:
+        async def get(self):
+            return 'foo'
+
+    buffer = fizzbotz.Buffer(MockItemClass(), 3)
+
+    await buffer.populate()
+    assert buffer.queue.qsize() == 3
+
+    await buffer.get()
+    assert buffer.queue.qsize() == 3
 
 
 @pytest.mark.asyncio

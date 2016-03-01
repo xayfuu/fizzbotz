@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
+import aiohttp
 import html
 import random
 import re
@@ -85,24 +83,42 @@ class Square:
         return '```\n{}\n```'.format(square)
 
 
+class Imgur:
+    def __init__(self, id_length=5):
+        self.id_length = id_length
+
+        self._valid_characters = string.ascii_letters + string.digits
+        self._removed_url = 'https://i.imgur.com/removed.png'
+        self._base_url = 'https://i.imgur.com/{}.png'
+
+    async def get(self):
+        while True:
+            image_id = ''.join(random.choice(self._valid_characters)
+                               for _ in range(self.id_length))
+            image_url = self._base_url.format(image_id)
+
+            r = None
+            try:
+                r = await aiohttp.get(image_url)
+            except aiohttp.errors.ClientResponseError:
+                continue
+            finally:
+                if r is not None:
+                    r.close()
+
+            if r.url != self._removed_url:
+                return image_url
+
+
 class Insult:
+    def __init__(self):
+        self._insult_url = 'http://www.insultgenerator.org/'
+
     async def get(self, from_html=None):
-        url = 'http://www.insultgenerator.org/'
-        text = await util.get_markup(url) if from_html is None else from_html
+        text = await util.get_markup(self._insult_url) if from_html is None else from_html
 
         parsed_insult = bs4.BeautifulSoup(text, 'html.parser')
         return parsed_insult.find('div', class_='wrap').get_text().lstrip()
-
-
-class Imgur:
-    def __init__(self, queue_size=20):
-        self._image_queue = util.ImageBuffer(queue_size)
-
-    async def get(self):
-        if self._image_queue.queue.empty():
-            await self._image_queue.populate()
-
-        return await self._image_queue.get()
 
 
 class Roll:
