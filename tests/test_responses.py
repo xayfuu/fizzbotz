@@ -35,14 +35,6 @@ def test_messages(filename, message_function):
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize('callback', [fizzbotz.Joke().get,
-                                      fizzbotz.TwitchChat().get,
-                                      fizzbotz.Insult().get])
-async def test_command_get(callback):
-    await callback() is not None
-
-
-@pytest.mark.asyncio
 async def test_imgur():
     pattern = re.compile('https://i.imgur.com/\w{5}.png')
     result = fizzbotz.Imgur().get()
