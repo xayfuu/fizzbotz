@@ -15,3 +15,18 @@ async def test_get_html():
         expected_html = test_file.read()[:-1]  # strip \n from end of file
 
     assert await fizzbotz.util.get_markup('http://httpbin.org/html') == expected_html
+
+
+@pytest.mark.asyncio
+async def test_buffer():
+    class MockItemClass:
+        async def get(self):
+            return 'foo'
+
+    buffer = fizzbotz.Buffer(MockItemClass(), 3)
+
+    await buffer.populate()
+    assert buffer.queue.qsize() == 3
+
+    await buffer.get()
+    assert buffer.queue.qsize() == 3

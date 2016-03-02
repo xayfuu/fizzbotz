@@ -51,21 +51,6 @@ async def test_imgur():
 
 
 @pytest.mark.asyncio
-async def test_buffer_populate():
-    class MockItemClass:
-        async def get(self):
-            return 'foo'
-
-    buffer = fizzbotz.Buffer(MockItemClass(), 3)
-
-    await buffer.populate()
-    assert buffer.queue.qsize() == 3
-
-    await buffer.get()
-    assert buffer.queue.qsize() == 3
-
-
-@pytest.mark.asyncio
 async def test_square():
     square_message = await fizzbotz.Square().get('ggsnipes/sgak')
     assert square_message == "```\n" \
